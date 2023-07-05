@@ -21,6 +21,7 @@ function testrun(){
 function graphFunction(array){
   let decimal_x = array[0];
   let decimal_y = array[1];
+  let data_xy_arr = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getActiveRange().getValues();
 
   return makeSaishoNijoEquation(data_xy_arr, decimal_x, decimal_y);
 }

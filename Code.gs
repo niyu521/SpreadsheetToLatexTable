@@ -30,7 +30,8 @@ function onOpen(){
   
   const ui = SpreadsheetApp.getUi(); //追加メニューの作成
   ui.createMenu('サイドバーを表示')
-  .addItem("サイドバーを表示", "showSidebar")
+  .addItem("指定した範囲の表を出力", "showSidebar")
+  .addItem("最小二乗法を適用", "showSidebar Graph")
   .addToUi(); 
 
 
