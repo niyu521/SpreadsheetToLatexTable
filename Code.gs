@@ -5,6 +5,12 @@ function showSidebar() {
   SpreadsheetApp.getUi().showSidebar(html);
 }
 
+function showSidebarGraph() {
+  var html = HtmlService.createHtmlOutputFromFile('sidebar_graph')
+    .setTitle('最小二乗法のグラフと計算過程を出力')
+  SpreadsheetApp.getUi().showSidebar(html);
+}
+
 function showMsg(msg){
   SpreadsheetApp.getUi().alert(msg)
 }
