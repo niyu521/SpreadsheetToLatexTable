@@ -11,6 +11,12 @@ function showSidebarGraph() {
   SpreadsheetApp.getUi().showSidebar(html);
 }
 
+function showSidebarMatrix() {
+  var html = HtmlService.createHtmlOutputFromFile('sidebar_matrix')
+    .setTitle('行列式の計算と計算結果を出力')
+  SpreadsheetApp.getUi().showSidebar(html);
+}
+
 function showMsg(msg){
   SpreadsheetApp.getUi().alert(msg)
 }
@@ -32,6 +38,7 @@ function onOpen(){
   ui.createMenu('サイドバーを表示')
   .addItem("指定した範囲の表を出力", "showSidebar")
   .addItem("最小二乗法を適用", "showSidebarGraph")
+  .addItem("行列式を計算", "showSidebarMatrix")
   .addToUi(); 
 
 

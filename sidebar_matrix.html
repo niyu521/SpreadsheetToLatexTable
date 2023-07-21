@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-ApFsAeIkXa2AVdS0UK8dqkLCG2APuMlUyoYg3ayu77H5dMQOx9VfPnoHpRFgePA4WZuWJzVQyTR0Ol5r3IiLCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+      
+      function runFunction() {
+        google.script.run.withSuccessHandler(showResult).matrixFunction();
+      }
+      
+      function showResult(result) {
+        document.getElementById('result').innerHTML = result;
+      }
+
+      function copyToClipboard() {
+        var resultElement = document.getElementById('result');
+        var range = document.createRange();
+        range.selectNode(resultElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        google.script.run.showMsg('結果をクリップボードにコピーしました');
+      }
+
+
+    </script>
+    <style>
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        border-radius: 7px;
+        border: 1px solid #ccc;
+        width: 220px;
+        margin-right: 10px;
+      }
+
+      button {
+        padding: 8px 16px;
+        border-radius: 7px;
+        border: none;
+        background-color: #4CAF50;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom:20px;
+        margin-top:10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #result {
+        margin-top: 3px;
+        padding: 13px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #fff; 
+        min-height:15px;
+        overflow-x:scroll;
+        white-space: nowrap;
+      }
+
+
+      .fb1 {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .fb2 {
+        bottom: 90px;
+        right: 20px;
+      }
+      
+
+      .floating-button {
+        position: fixed;
+        z-index: 9999;
+        background-color: #4CAF50;
+        color: #fff;
+        border-radius: 50%;
+        border: none;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+
+      .floating-button:hover {
+        background-color: #327535;
+      }
+
+      .separator{
+        border-top: 1px solid #cccccc; 
+        margin: 5px 0px 20px 0px;
+      }
+
+      .tooltip {
+        visibility: hidden;
+        position: absolute;
+        right:72px;
+        background-color: #000;
+        color: #fff;
+        padding: 5px;
+        border-radius: 4px;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0s linear 0.3s;
+        height:18px;
+        width:85px;
+        text-align: center;
+      }
+
+      .floating-button:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+      }
+
+
+    </style>
+
+  </head>
+  <body>
+    <div class="content">
+      <button onclick="runFunction()">関数を実行</button><br>
+      <div class="separator"></div>
+      <label for="arrayInput">以下にLaTeX形式の行列式と計算過程が表示されます</label><br>
+      <div id="result"></div>
+      <button onclick="copyToClipboard()">結果をクリップボードにコピー</button>
+    </div>
+
+    <button class="floating-button fb2" onclick="runFunction()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 14 14" id="IconChangeColor"> <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" id="mainIconPathAttribute" fill="#ffffff"></path> </svg>
+      <span class="tooltip">関数を実行</span>
+    </button>
+
+    <button class="floating-button fb1" onclick="copyToClipboard()">
+      <svg style="color: white; --darkreader-inline-color: #ffffff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-darkreader-inline-color="">
+        <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" fill="white"></path>
+      </svg>
+      <span class="tooltip">結果をコピー</span>
+    </button>
+  </body>
+</html>
+
+
+
+
